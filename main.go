@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
-	_ "pack"
+	"pack"
 	"math/rand"
 	"reflect"
 	"testing/quick"
 	"time"
+	"testing"
 )
 
 func main() {
@@ -33,7 +34,15 @@ func main() {
 		fmt.Println(val.Int())
 	}
 
-	
+
+//	pack.PrintWeather(101010100)
+
+	br := testing.Benchmark(func(b *testing.B) {
+		for i := 0; i < b.N; i ++ {
+			pack.PrintWeather(101010100)
+		}
+	})
+	fmt.Println(br)
 }
 type MyInt int
 
